@@ -1,13 +1,13 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { fetchPhotosWithQuery } from '../../api/photos-api.ts';
-import SearchBar from '../SearchBar/SearchBar.tsx';
-import ImageGallery from '../ImageGallery/ImageGallery.tsx';
-import Loader from '../Loader/Loader.tsx';
-import ErrorMessage from '../ErrorMessage/ErrorMessage.tsx';
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.tsx';
-import ImageModal from '../ImageModal/ImageModal.tsx';
-import { Photo, FetchPhotosResponse } from './App.type.ts';
+import { fetchPhotosWithQuery } from '../../api/photos-api';
+import SearchBar from '../SearchBar/SearchBar';
+import ImageGallery from '../ImageGallery/ImageGallery';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
+import ImageModal from '../ImageModal/ImageModal';
+import { Photo, FetchPhotosResponse } from './App.type';
 
 const App: React.FC = () => {
 
@@ -69,7 +69,7 @@ const App: React.FC = () => {
       {loading && <Loader></Loader>}
       {isError && <ErrorMessage></ErrorMessage>}
       {loadMoreBtn && <LoadMoreBtn handleLoadMore={handleLoadMore}></LoadMoreBtn>}
-      {modalIsOpen && <ImageModal modalIsOpen={modalIsOpen} closeModal={closeModal} photo={selectedPhoto}></ImageModal>}
+      {modalIsOpen && selectedPhoto && <ImageModal modalIsOpen={modalIsOpen} closeModal={closeModal} photo={selectedPhoto}></ImageModal>}
     </>
     
   )

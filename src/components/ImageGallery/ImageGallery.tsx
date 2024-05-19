@@ -1,6 +1,6 @@
 import css from './ImageGallery.module.css';
-import ImageCard from '../ImageCard/ImageCard.tsx';
-import { Photo } from '../App/App.type.ts';
+import ImageCard from '../ImageCard/ImageCard';
+import { Photo } from '../App/App.type';
 
 interface ImageGalleryProps {
     items: Photo[];

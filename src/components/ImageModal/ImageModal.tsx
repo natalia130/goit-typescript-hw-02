@@ -1,38 +1,40 @@
 import Modal from 'react-modal';
+import React, { useEffect } from 'react';
 import { Photo } from '../App/App.type';
 
 interface ImageModalProps {
-    modalIsOpen: (item: Photo) => void;
+    modalIsOpen: boolean;
     photo: Photo;
     closeModal: () => void;
 }
 
-const ImageModal: React.FC <ImageModalProps> = ({ modalIsOpen, photo, closeModal }) => {
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        background: 'transparent',
+        border: 'none',
+    },
+};
+
+if (Modal.defaultStyles.overlay) {
     Modal.defaultStyles.overlay.backgroundColor = "rgba(41, 40, 40, 0.724)";
-    const customStyles = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'transparent',
-            border: 'none',
-        },
-    };
-    Modal.setAppElement(document.getElementById("root") as HTMLElement);
-    
+}
+Modal.setAppElement(document.getElementById("root") as HTMLElement);
+
+const ImageModal: React.FC <ImageModalProps> = ({ modalIsOpen, photo, closeModal }) => {
     return (
         <Modal
             isOpen={modalIsOpen}
-            // onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}
-            contentLabel="Example Modal"
+            contentLabel="Photo Modal"
             shouldCloseOnEsc={true}
             shouldCloseOnOverlayClick={true}
-
         >
             <img src={photo.urls.regular} alt={photo.alt_description}></img>
         </Modal>
