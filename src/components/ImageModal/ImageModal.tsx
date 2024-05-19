@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-import React, { useEffect } from 'react';
 import { Photo } from '../App/App.type';
 
 interface ImageModalProps {
